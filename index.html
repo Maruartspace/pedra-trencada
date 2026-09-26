@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pedra Trencada — Celler a Gratallops · DOQ Priorat</title>
+<meta name="description" content="Celler familiar a Gratallops, DOQ Priorat. Garnatxa i carinyena en costers de llicorella. Visites i tastos amb reserva directa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Archivo:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dust:#D9D2C4;         /* terra seca dels bancals */
+  --dust-2:#CDC5B4;
+  --slate:#1C1E22;        /* llicorella negra */
+  --slate-soft:#5A5B5E;
+  --quartz:#F6F3EC;       /* les vetes de quars */
+  --garnet:#7C2233;       /* el vi */
+  --line:rgba(28,30,34,.2);
+  --disp:"Big Shoulders Display",Impact,sans-serif;
+  --sans:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --pad:clamp(1.1rem,4vw,4.5rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--dust);color:var(--slate);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--garnet);outline-offset:3px}
+.wrap{padding-left:var(--pad);padding-right:var(--pad);max-width:1600px;margin:0 auto}
+
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-soft)}
+.mono--g{color:var(--garnet)}
+.disp{font-family:var(--disp);font-weight:800;text-transform:uppercase;line-height:.82;letter-spacing:-.005em}
+.big{font-family:var(--disp);font-weight:700;text-transform:uppercase;line-height:.86;font-size:clamp(2.4rem,6.5vw,5.5rem)}
+
+/* ---------- plaques de foto ---------- */
+.ph{
+  position:relative;overflow:hidden;border:1px solid var(--line);
+  background:repeating-linear-gradient(-45deg,rgba(28,30,34,.05) 0 1px,transparent 1px 10px),var(--dust-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:.45rem;padding:1.25rem;min-height:180px;
+}
+.ph::before{content:attr(data-label);font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--garnet);max-width:24ch;line-height:1.5}
+.ph::after{content:attr(data-size);font-family:var(--mono);font-size:.66rem;color:var(--slate-soft);opacity:.8}
+.ph--wide{aspect-ratio:16/9}
+.ph--tall{aspect-ratio:4/5}
+.ph--sq{aspect-ratio:1/1}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
+
+
+/* ---------- capçalera ---------- */
+.head{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem var(--pad);transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.head.stuck{background:rgba(217,210,196,.93);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+.mark{font-family:var(--disp);font-weight:800;font-size:1.6rem;text-transform:uppercase;letter-spacing:.01em;white-space:nowrap}
+.mark i{font-style:normal;color:var(--garnet)}
+.nav{display:flex;gap:1.8rem}
+.nav a{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em}
+.nav a:hover{color:var(--garnet)}
+.head__right{display:flex;align-items:center;gap:1rem}
+.lang{display:flex;gap:.15rem}
+.lang button{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;background:none;border:0;color:var(--slate-soft);cursor:pointer;padding:.35rem .3rem;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.lang button:hover{color:var(--slate)}
+.lang button[aria-current="true"]{color:var(--garnet);border-bottom-color:var(--garnet)}
+.pill{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--slate);padding:.6rem 1.15rem;transition:background .25s,color .25s,border-color .25s;white-space:nowrap;display:inline-block}
+.pill:hover{background:var(--slate);color:var(--dust)}
+.pill--g{background:var(--garnet);border-color:var(--garnet);color:var(--quartz)}
+.pill--g:hover{background:var(--slate);border-color:var(--slate);color:var(--quartz)}
+@media(max-width:980px){.nav{display:none}}
+@media(max-width:520px){.mark{font-size:1.2rem}.pill{padding:.55rem .85rem}}
+
+/* ---------- hero: titular en bancals ---------- */
+.hero{padding-block-start:7.5rem}
+.hero__meta{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.terrace{padding:clamp(1.75rem,4vw,3.25rem) 0 clamp(1.25rem,3vw,2rem)}
+.terrace h1{font-family:var(--disp);font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:-.005em;font-size:clamp(2.9rem,11.5vw,10.5rem)}
+.terrace h1 span{display:block}
+.terrace h1 span:nth-child(2){margin-left:8%}
+.terrace h1 span:nth-child(3){margin-left:16%;color:var(--garnet)}
+.hero__lede{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,4vw,4rem);padding-bottom:clamp(1.75rem,4vw,3rem)}
+.hero__lede>p{font-size:clamp(1.05rem,1.7vw,1.4rem);letter-spacing:-.012em;line-height:1.4}
+.hero__lede .side{display:flex;flex-direction:column;justify-content:flex-end;gap:.9rem}
+.hero__actions{display:flex;gap:.7rem;flex-wrap:wrap}
+@media(max-width:820px){.hero__lede{grid-template-columns:1fr}.terrace h1 span:nth-child(2){margin-left:5%}.terrace h1 span:nth-child(3){margin-left:10%}}
+
+/* ---------- xifres ---------- */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--slate);border-bottom:1px solid var(--slate)}
+.fig{padding:1.4rem 1.1rem;border-right:1px solid var(--line)}
+.fig:last-child{border-right:0}
+.fig b{display:block;font-family:var(--disp);font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:.9}
+.fig span{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-soft);display:block;margin-top:.4rem;line-height:1.4}
+@media(max-width:760px){.figs{grid-template-columns:repeat(2,1fr)}.fig:nth-child(2){border-right:0}.fig:nth-child(1),.fig:nth-child(2){border-bottom:1px solid var(--line)}}
+
+
+/* ---------- el coster: secció animada ---------- */
+.cs-lbl{font-family:var(--mono);font-size:28px;fill:var(--slate-soft);letter-spacing:.04em;font-feature-settings:"zero" 0;font-variant-numeric:tabular-nums}
+.cs-lbl--k{fill:var(--slate)}
+.cs-num{font-family:var(--disp);font-weight:700;font-size:68px;fill:var(--garnet);letter-spacing:-.01em}
+.cs-cap{font-family:var(--mono);font-size:24px;fill:var(--garnet);text-transform:uppercase;letter-spacing:.12em}
+.cs-step,.cs-vines g{transform-box:fill-box;transform-origin:50% 100%}
+.coster .rv.in .cs-step{animation:csRise .68s cubic-bezier(.22,.8,.3,1) backwards}
+.coster .rv.in .cs-step:nth-child(1){animation-delay:.10s}
+.coster .rv.in .cs-step:nth-child(2){animation-delay:.21s}
+.coster .rv.in .cs-step:nth-child(3){animation-delay:.32s}
+.coster .rv.in .cs-step:nth-child(4){animation-delay:.43s}
+.coster .rv.in .cs-step:nth-child(5){animation-delay:.54s}
+.coster .rv.in .cs-slope{animation:csDraw 1.1s ease-out .55s backwards}
+.coster .rv.in .cs-vines g{animation:csSprout .5s ease-out backwards}
+.coster .rv.in .cs-axis{animation:csFade .6s ease-out .95s backwards}
+.coster .rv.in .cs-annot{animation:csFade .6s ease-out 1.2s backwards}
+@keyframes csRise{from{transform:scaleY(.82);opacity:0}to{transform:scaleY(1);opacity:1}}
+@keyframes csDraw{from{stroke-dashoffset:980}to{stroke-dashoffset:0}}
+@keyframes csSprout{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes csFade{from{opacity:0}to{opacity:1}}
+@media(max-width:900px){.cs-lbl{font-size:34px}.cs-cap{font-size:28px}.cs-num{font-size:82px}}
+@media(prefers-reduced-motion:reduce){
+  .coster .rv.in .cs-step,.coster .rv.in .cs-slope,.coster .rv.in .cs-vines g,
+  .coster .rv.in .cs-axis,.coster .rv.in .cs-annot{animation:none}
+}
+
+/* ---------- com arribar ---------- */
+.arribar{margin-top:1.9rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.arribar h4{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-soft);font-weight:400;margin-bottom:1rem}
+.arr{list-style:none;counter-reset:a;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.3rem}
+.arr li{counter-increment:a;display:flex;gap:.85rem;font-size:.95rem;line-height:1.5;color:var(--slate)}
+.arr li::before{content:counter(a,decimal-leading-zero);font-family:var(--mono);font-size:.7rem;color:var(--garnet);padding-top:.25rem}
+.arr__link{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--garnet);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.arr__link:hover{opacity:.65}
+
+/* ---------- el coster (signatura) ---------- */
+.coster{padding-block:clamp(3.5rem,7vw,6.5rem);border-bottom:1px solid var(--line)}
+.coster__grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(1.75rem,4vw,4rem);align-items:center}
+.coster svg{width:100%;height:auto;display:block}
+.coster p{color:var(--slate-soft);margin-top:1.25rem;max-width:46ch}
+@media(max-width:900px){.coster__grid{grid-template-columns:1fr}}
+
+/* ---------- seccions ---------- */
+.sec{padding-block:clamp(3.5rem,7vw,6.5rem);border-bottom:1px solid var(--line)}
+.sec__head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(1.75rem,4vw,3rem)}
+
+/* ---------- declaració ---------- */
+.statement>p{font-family:var(--disp);font-weight:700;text-transform:uppercase;line-height:.88;font-size:clamp(1.9rem,5.6vw,4.4rem);max-width:16ch}
+.statement>p em{font-style:normal;color:var(--garnet)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.25rem,3vw,3rem);margin-top:clamp(2.5rem,5vw,4rem)}
+.cols h4{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.cols p{font-size:.98rem;line-height:1.6;color:var(--slate-soft)}
+@media(max-width:820px){.cols{grid-template-columns:1fr}}
+
+/* ---------- vins ---------- */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.8rem,1.6vw,1.4rem)}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(.8rem,1.6vw,1.4rem)}
+.grid4>*,.grid5>*{min-width:0}
+.card__name{overflow-wrap:anywhere}
+.card{display:flex;flex-direction:column;gap:.85rem}
+.card .ph{transition:border-color .3s}
+.card:hover .ph{border-color:var(--garnet)}
+.card__row{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem}
+.card__name{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.5rem;line-height:1}
+.card__tag{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;color:var(--garnet);white-space:nowrap}
+.card__sub{font-family:var(--mono);font-size:.72rem;color:var(--slate-soft);text-transform:uppercase;letter-spacing:.04em}
+@media(max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.grid5{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.grid5{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- experiències ---------- */
+.exp{display:grid;grid-template-columns:4rem 1.6fr 1fr auto auto;gap:1.5rem;align-items:center;padding:1.55rem 0;border-top:1px solid var(--line);transition:padding-left .3s,background .3s}
+.exp:last-of-type{border-bottom:1px solid var(--line)}
+.exp:hover{background:rgba(124,34,51,.06);padding-left:.9rem}
+.exp__n{font-family:var(--mono);font-size:.75rem;color:var(--garnet)}
+.exp__name{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1}
+.exp__desc{font-size:.9rem;color:var(--slate-soft);line-height:1.5}
+.exp__price{font-family:var(--disp);font-weight:700;font-size:2rem;line-height:1;white-space:nowrap}
+.exp__price small{font-family:var(--mono);font-size:.62rem;color:var(--slate-soft);text-transform:uppercase;margin-left:.35rem}
+@media(max-width:980px){
+  .exp{grid-template-columns:2.5rem 1fr;row-gap:.5rem}
+  .exp__desc,.exp__price,.exp .pill{grid-column:2}
+  .exp .pill{justify-self:start}
+}
+
+/* ---------- premsa ---------- */
+.press{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.25rem,3vw,2.5rem)}
+.press blockquote{font-size:1rem;line-height:1.45}
+.press cite{display:block;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;color:var(--garnet);font-style:normal;margin-top:.75rem}
+@media(max-width:980px){.press{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.press{grid-template-columns:1fr}}
+
+/* ---------- reserva ---------- */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.75rem,4vw,4.5rem);align-items:start}
+.form{border:1px solid var(--slate);padding:clamp(1.25rem,2.6vw,2.35rem);background:var(--dust-2)}
+.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.15rem}
+.field label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-soft)}
+.field input,.field select{font-family:var(--sans);font-size:1rem;color:var(--slate);background:transparent;border:0;border-bottom:1px solid var(--line);padding:.6rem 0;transition:border-color .25s}
+.field input:focus,.field select:focus{border-bottom-color:var(--garnet);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
+.submit{width:100%;margin-top:.5rem;padding:1.05rem;cursor:pointer;font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;background:var(--garnet);color:var(--quartz);border:1px solid var(--garnet);transition:background .25s,border-color .25s}
+.submit:hover{background:var(--slate);border-color:var(--slate)}
+.dl{margin-top:2rem}
+.dl div{display:flex;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;padding:.95rem 0;border-bottom:1px solid var(--line)}
+.dl dt{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-soft)}
+.dl dd{font-size:.95rem;text-align:right}
+@media(max-width:980px){.book{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+
+/* ---------- peu ---------- */
+.foot{padding:clamp(2.5rem,5vw,4rem) 0 1.75rem}
+.foot__word{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
+.foot__word span{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(3rem,13vw,10rem);line-height:.8}
+.foot__word .mid{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--slate-soft);text-align:center;line-height:1.6}
+.foot__bar{display:flex;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;margin-top:clamp(1.75rem,4vw,3rem);padding-top:1.25rem;border-top:1px solid var(--line)}
+.foot__links{display:flex;gap:1.5rem;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+
+<header class="head" id="head">
+  <a href="#top" class="mark">PEDRA<i>·</i>TRENCADA</a>
+  <nav class="nav">
+    <a href="#coster"  data-t="nav_coster">El coster</a>
+    <a href="#vins"    data-t="nav_vins">Vins</a>
+    <a href="#visites" data-t="nav_visites">Visites</a>
+    <a href="#reserva" data-t="nav_arribar">Com arribar</a>
+  </nav>
+  <div class="head__right">
+    <div class="lang" id="lang" role="group" aria-label="Idioma">
+      <button type="button" data-lang="ca" aria-current="true">CA</button>
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+    </div>
+    <a href="#reserva" class="pill pill--g" data-t="cta_reservar">Reservar</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero wrap" id="top">
+  <div class="hero__meta">
+    <span class="mono" data-t="meta_loc">Gratallops · Priorat · Tarragona</span>
+    <span class="mono" data-t="meta_do">DOQ Priorat</span>
+    <span class="mono mono--g" data-t="meta_verema">Verema a mà · setembre</span>
+  </div>
+
+  <div class="terrace">
+    <h1 data-t="html_h1"><span>No hi ha</span><span>màquina</span><span>que hi pugi</span></h1>
+  </div>
+
+  <div class="hero__lede">
+    <p data-t="hero_lede">Els nostres bancals tenen pendents que passen del 50%. Cap tractor hi arriba: aquí es poda, es verema i es baixa el raïm a esquena, com fa vuit-cents anys. Set hectàrees, dotze mil ampolles i cap drecera.</p>
+    <div class="side">
+      <p class="mono" data-t="hero_side">Garnatxa i carinyena velles — Sòl de llicorella — Vinyes entre 380 i 620 m — Producció limitada</p>
+      <div class="hero__actions">
+        <a href="#visites" class="pill pill--g" data-t="btn_visites">Visites i tastos</a>
+        <a href="#vins" class="pill" data-t="btn_vins">Veure els vins</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph ph--wide" data-t-label="ph_hero" data-label="Foto principal · bancals de llicorella en pendent" data-size="2400 × 1350 px"><img src="fotos/hero.jpg" alt="Foto principal" onerror="this.remove()"></div>
+</section>
+
+<!-- ============ XIFRES ============ -->
+<section class="wrap" style="padding-top:clamp(2rem,4vw,3rem)">
+  <div class="figs">
+    <div class="fig"><b>60%</b><span data-t="fig1">Pendent màxim dels costers</span></div>
+    <div class="fig"><b>1 kg</b><span data-t="fig2">De raïm per cep</span></div>
+    <div class="fig"><b>100–750</b><span data-t="fig3">Metres d'altitud a la DOQ</span></div>
+    <div class="fig"><b>90%</b><span data-t="fig4">Del vi del Priorat és negre</span></div>
+  </div>
+</section>
+
+<!-- ============ EL COSTER ============ -->
+<section class="coster wrap" id="coster">
+  <div class="coster__grid">
+    <div class="rv">
+      <svg class="cs" viewBox="-118 70 1118 470" role="img" aria-labelledby="costerTitle">
+        <title id="costerTitle">Secció d'un coster: cinc bancals tallats en un pendent del 60%, entre 380 i 620 metres</title>
+        <defs>
+          <pattern id="llic" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(56)">
+            <rect width="11" height="11" fill="#1C1E22"/>
+            <line x1="0" y1="0" x2="0" y2="11" stroke="#33353B" stroke-width="1.6"/>
+          </pattern>
+        </defs>
+
+        <line x1="60" y1="500" x2="960" y2="500" stroke="currentColor" stroke-width="1.4" opacity=".28"/>
+        <line class="cs-slope" x1="95" y1="502" x2="950" y2="128" stroke="var(--garnet)" stroke-width="3" stroke-dasharray="9 8" stroke-linecap="round"/>
+
+        <g class="cs-steps">
+          <rect class="cs-step" x="100" y="467" width="168" height="33" fill="url(#llic)"/>
+          <rect class="cs-step" x="268" y="383" width="168" height="117" fill="url(#llic)"/>
+          <rect class="cs-step" x="436" y="300" width="168" height="200" fill="url(#llic)"/>
+          <rect class="cs-step" x="604" y="217" width="168" height="283" fill="url(#llic)"/>
+          <rect class="cs-step" x="772" y="133" width="168" height="367" fill="url(#llic)"/>
+        </g>
+
+        <g class="cs-vines" stroke="var(--garnet)" stroke-width="2.6" stroke-linecap="round" fill="none">
+          <g style="animation-delay:0.62s"><path d="M142 467v-15M142 460l-7-7M142 460l7-7"/></g>
+          <g style="animation-delay:0.67s"><path d="M184 467v-15M184 460l-7-7M184 460l7-7"/></g>
+          <g style="animation-delay:0.71s"><path d="M226 467v-15M226 460l-7-7M226 460l7-7"/></g>
+          <g style="animation-delay:0.76s"><path d="M310 383v-15M310 376l-7-7M310 376l7-7"/></g>
+          <g style="animation-delay:0.80s"><path d="M352 383v-15M352 376l-7-7M352 376l7-7"/></g>
+          <g style="animation-delay:0.85s"><path d="M394 383v-15M394 376l-7-7M394 376l7-7"/></g>
+          <g style="animation-delay:0.89s"><path d="M478 300v-15M478 293l-7-7M478 293l7-7"/></g>
+          <g style="animation-delay:0.94s"><path d="M520 300v-15M520 293l-7-7M520 293l7-7"/></g>
+          <g style="animation-delay:0.98s"><path d="M562 300v-15M562 293l-7-7M562 293l7-7"/></g>
+          <g style="animation-delay:1.03s"><path d="M646 217v-15M646 210l-7-7M646 210l7-7"/></g>
+          <g style="animation-delay:1.07s"><path d="M688 217v-15M688 210l-7-7M688 210l7-7"/></g>
+          <g style="animation-delay:1.12s"><path d="M730 217v-15M730 210l-7-7M730 210l7-7"/></g>
+          <g style="animation-delay:1.16s"><path d="M814 133v-15M814 126l-7-7M814 126l7-7"/></g>
+          <g style="animation-delay:1.21s"><path d="M856 133v-15M856 126l-7-7M856 126l7-7"/></g>
+          <g style="animation-delay:1.25s"><path d="M898 133v-15M898 126l-7-7M898 126l7-7"/></g>
+        </g>
+
+        <g class="cs-axis">
+          <line x1="86" y1="133" x2="100" y2="133" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <line x1="86" y1="300" x2="100" y2="300" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <line x1="86" y1="500" x2="100" y2="500" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+          <text class="cs-lbl cs-lbl--k" x="74" y="133" text-anchor="end" dominant-baseline="middle">620 m</text>
+          <text class="cs-lbl"           x="74" y="300" text-anchor="end" dominant-baseline="middle">500 m</text>
+          <text class="cs-lbl cs-lbl--k" x="74" y="500" text-anchor="end" dominant-baseline="middle">380 m</text>
+        </g>
+
+        <g class="cs-annot">
+          <text class="cs-num" x="150" y="212">60%</text>
+          <text class="cs-cap" x="152" y="243" data-t="cs_cap">Pendent mitjà</text>
+          <line x1="272" y1="262" x2="424" y2="356" stroke="var(--garnet)" stroke-width="1.4" opacity=".55"/>
+          <circle cx="424" cy="356" r="4" fill="var(--garnet)"/>
+        </g>
+      </svg>
+    </div>
+    <div class="rv">
+      <h2 class="big" data-t="coster_h">La llicorella</h2>
+      <p data-t="coster_p1">Pissarra negra trencada, amb vetes de quars. Un sòl pobríssim que gairebé no reté aigua: les arrels han de baixar metres avall buscant-la, i pel camí s'emporten tot el que la pedra els dona.</p>
+      <p data-t="coster_p2">Per això un cep del Priorat fa un quilo de raïm i no deu. Menys vi, però cada got porta la muntanya a dins. I per això el Priorat és l'única denominació qualificada de Catalunya, una de les dues de tot l'Estat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECLARACIÓ ============ -->
+<section class="sec statement wrap">
+  <p class="rv" data-t="html_statement">Aquí el vi <em>costa</em> el que costa perquè costa de fer.</p>
+  <div class="cols">
+    <div class="rv">
+      <h4 data-t="col1_h">A esquena</h4>
+      <p data-t="col1_p">La verema es fa amb caixes petites que baixen a mà pels bancals. Un dia de collita són vuit persones i moltes pujades. No hi ha manera de fer-ho més barat sense fer-ho pitjor.</p>
+    </div>
+    <div class="rv">
+      <h4 data-t="col2_h">Vinyes velles</h4>
+      <p data-t="col2_p">Les nostres carinyenes tenen entre seixanta i noranta anys. Donen poquíssim, però són les que aguanten la sequera quan els estius es tornen impossibles.</p>
+    </div>
+    <div class="rv">
+      <h4 data-t="col3_h">Sense presses</h4>
+      <p data-t="col3_p">Fermentació amb el llevat de la vinya, criança llarga i cap filtració. Fem dos vins l'any i prou. Quan s'acaben, s'acaben fins la verema següent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VINS ============ -->
+<section class="sec wrap" id="vins">
+  <div class="sec__head">
+    <h2 class="big rv" data-t="h_vins">Cinc vins</h2>
+    <span class="mono rv" data-t="vins_note">Venda al celler i enviament a la península</span>
+  </div>
+  <div class="grid5">
+    <article class="card rv">
+      <div class="ph ph--sq" data-t-label="ph_b1" data-label="Ampolla · Trencada Blanc" data-size="1200 × 1200 px"><img src="fotos/vino-1.jpg" alt="Botella 1" loading="lazy" onerror="this.remove()"></div>
+      <div class="card__row"><span class="card__name">Trencada Blanc</span><span class="card__tag">22 €</span></div>
+      <span class="card__sub" data-t="w1_sub">2024 · Garnatxa blanca · 900 ampolles</span>
+    </article>
+    <article class="card rv">
+      <div class="ph ph--sq" data-t-label="ph_b5" data-label="Ampolla · Ull de Perdiu" data-size="1200 × 1200 px"><img src="fotos/vino-5.jpg" alt="Botella 5" loading="lazy" onerror="this.remove()"></div>
+      <div class="card__row"><span class="card__name">Ull de Perdiu</span><span class="card__tag">24 €</span></div>
+      <span class="card__sub" data-t="w5_sub">2024 · Garnatxa de premsa directa · 1.200 ampolles</span>
+    </article>
+    <article class="card rv">
+      <div class="ph ph--sq" data-t-label="ph_b2" data-label="Ampolla · Coster Nord" data-size="1200 × 1200 px"><img src="fotos/vino-2.jpg" alt="Botella 2" loading="lazy" onerror="this.remove()"></div>
+      <div class="card__row"><span class="card__name">Coster Nord</span><span class="card__tag">28 €</span></div>
+      <span class="card__sub" data-t="w2_sub">2022 · Garnatxa · Carinyena · 12 mesos</span>
+    </article>
+    <article class="card rv">
+      <div class="ph ph--sq" data-t-label="ph_b3" data-label="Ampolla · Vinya del Mig" data-size="1200 × 1200 px"><img src="fotos/vino-3.jpg" alt="Botella 3" loading="lazy" onerror="this.remove()"></div>
+      <div class="card__row"><span class="card__name">Vinya del Mig</span><span class="card__tag">45 €</span></div>
+      <span class="card__sub" data-t="w3_sub">2021 · Carinyena de 90 anys · 18 mesos</span>
+    </article>
+    <article class="card rv">
+      <div class="ph ph--sq" data-t-label="ph_b4" data-label="Ampolla · Pedra Trencada" data-size="1200 × 1200 px"><img src="fotos/vino-4.jpg" alt="Botella 4" loading="lazy" onerror="this.remove()"></div>
+      <div class="card__row"><span class="card__name">Pedra Trencada</span><span class="card__tag" data-t="w4_tag">Exhaurit</span></div>
+      <span class="card__sub" data-t="w4_sub">2020 · Selecció de bancals · 1.400 ampolles</span>
+    </article>
+  </div>
+</section>
+
+<!-- ============ VISITES ============ -->
+<section class="sec wrap" id="visites">
+  <div class="sec__head">
+    <h2 class="big rv" data-t="h_visites">Pujar al coster</h2>
+    <span class="mono rv">Català · Castellano · English · Français</span>
+  </div>
+
+  <div class="rv">
+    <div class="exp">
+      <span class="exp__n">01</span>
+      <span class="exp__name" data-t="e1_name">Visita i tast</span>
+      <span class="exp__desc" data-t="e1_desc">Celler, bancals baixos i tast de quatre vins amb formatge i oli de la comarca. 1 h 30 · fins a 15 persones.</span>
+      <span class="exp__price">30 €<small data-t="per_person">persona</small></span>
+      <a href="#reserva" class="pill" data-t="cta_reservar">Reservar</a>
+    </div>
+    <div class="exp">
+      <span class="exp__n">02</span>
+      <span class="exp__name" data-t="e2_name">Caminada pels costers</span>
+      <span class="exp__desc" data-t="e2_desc">Pujada a peu fins a la vinya de dalt, amb parada a mig camí. Calçat de muntanya obligatori. 3 h · màxim 10 persones.</span>
+      <span class="exp__price">55 €<small data-t="per_person">persona</small></span>
+      <a href="#reserva" class="pill" data-t="cta_reservar">Reservar</a>
+    </div>
+    <div class="exp">
+      <span class="exp__n">03</span>
+      <span class="exp__name" data-t="e3_name">Veremar amb nosaltres</span>
+      <span class="exp__desc" data-t="e3_desc">Un matí de collita real al setembre: caixes, esquena i dinar llarg amb l'equip. Places molt limitades.</span>
+      <span class="exp__price">90 €<small data-t="per_person">persona</small></span>
+      <a href="#reserva" class="pill" data-t="cta_reservar">Reservar</a>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-top:clamp(1.75rem,4vw,3rem)">
+    <div class="ph ph--sq rv" data-t-label="ph_v1" data-label="Bancals des de dalt" data-size="1200 × 1200 px"><img src="fotos/foto-1.jpg" alt="Foto experiencia 1" loading="lazy" onerror="this.remove()"></div>
+    <div class="ph ph--sq rv" data-t-label="ph_v2" data-label="Mans amb pedra de llicorella" data-size="1200 × 1200 px"><img src="fotos/foto-2.jpg" alt="Foto experiencia 2" loading="lazy" onerror="this.remove()"></div>
+    <div class="ph ph--sq rv" data-t-label="ph_v3" data-label="Tast al celler" data-size="1200 × 1200 px"><img src="fotos/foto-3.jpg" alt="Foto experiencia 3" loading="lazy" onerror="this.remove()"></div>
+    <div class="ph ph--sq rv" data-t-label="ph_v4" data-label="Verema · caixes i equip" data-size="1200 × 1200 px"><img src="fotos/foto-4.jpg" alt="Foto experiencia 4" loading="lazy" onerror="this.remove()"></div>
+  </div>
+</section>
+
+<!-- ============ PREMSA ============ -->
+<section class="sec wrap" id="premsa">
+  <div class="sec__head"><h2 class="big rv" data-t="h_premsa">Què en diuen</h2></div>
+  <div class="press">
+    <!-- Substituir per cites reals del client -->
+    <div class="rv"><blockquote data-t="q1">«Aquí hi va una frase curta de premsa o una ressenya real del client.»</blockquote><cite data-t="q_cite">[ Nom del mitjà o del client ]</cite></div>
+    <div class="rv"><blockquote data-t="q2">«Dues línies com a màxim. Com més concreta, millor funciona.»</blockquote><cite data-t="q_cite">[ Nom del mitjà o del client ]</cite></div>
+    <div class="rv"><blockquote data-t="q3">«També serveix una puntuació de guia o una ressenya de Google.»</blockquote><cite data-t="q_cite">[ Nom del mitjà o del client ]</cite></div>
+    <div class="rv"><blockquote data-t="q4">«Si no hi ha premsa, aquesta secció s'elimina sencera.»</blockquote><cite data-t="q_cite">[ Nom del mitjà o del client ]</cite></div>
+  </div>
+</section>
+
+<!-- ============ RESERVA ============ -->
+<section class="sec wrap" id="reserva">
+  <div class="book">
+    <div class="rv">
+      <h2 class="big" data-t="h_reserva">Reserva directa</h2>
+      <p style="margin-top:1.5rem;max-width:44ch;color:var(--slate-soft)" data-t="reserva_p">
+        Reservant aquí pagues el preu de celler, sense comissió de plataforma. Confirmem per WhatsApp en menys de 24 hores. La carretera de pujada és estreta: et donarem indicacions concretes per aparcar.
+      </p>
+
+      <dl class="dl">
+        <div><dt data-t="dl_tel">Telèfon i WhatsApp</dt><dd>+34 000 00 00 00</dd></div>
+        <div><dt data-t="dl_mail">Correu</dt><dd>hola@pedratrencada.example</dd></div>
+        <div><dt data-t="dl_adr">Adreça</dt><dd>Camí dels Costers s/n · 43737 Gratallops</dd></div>
+        <div><dt data-t="dl_hor">Horari</dt><dd data-t="dl_hor_v">Dt–Ds 10–14 h / 16–19 h · Dg 10–14 h · Dl tancat</dd></div>
+      </dl>
+      <div class="arribar">
+        <h4 data-t="arr_h">Com arribar</h4>
+        <ol class="arr">
+          <li data-t="arr_1">Des de Falset, T-710 direcció Gratallops · 12 km</li>
+          <li data-t="arr_2">Travessar el poble i seguir el camí dels Costers</li>
+          <li data-t="arr_3">Pista senyalitzada a la dreta · 800 m fins al celler</li>
+        </ol>
+        <a class="arr__link" href="https://www.google.com/maps/search/?api=1&amp;query=Gratallops%2C+Priorat" target="_blank" rel="noopener" data-t="arr_link">Obrir a Google Maps ↗</a>
+      </div>
+    </div>
+
+    <form class="form rv" id="form">
+      <div class="field">
+        <label for="exp" data-t="f_exp">Experiència</label>
+        <select id="exp">
+          <option data-t="opt1">01 — Visita i tast · 30 €</option>
+          <option data-t="opt2">02 — Caminada pels costers · 55 €</option>
+          <option data-t="opt3">03 — Veremar amb nosaltres · 90 €</option>
+          <option data-t="opt4">Grup o esdeveniment privat</option>
+        </select>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="fecha" data-t="f_data">Data</label>
+          <input type="text" id="fecha" inputmode="numeric" maxlength="14" data-t-ph="f_data_ph" placeholder="DD / MM / AAAA" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="pax" data-t="f_pax">Persones</label>
+          <input type="number" id="pax" min="1" max="20" value="2">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="nom" data-t="f_nom">Nom</label>
+          <input type="text" id="nom" data-t-ph="f_nom_ph" placeholder="Nom i cognom">
+        </div>
+        <div class="field">
+          <label for="idioma" data-t="f_idioma">Idioma</label>
+          <select id="idioma"><option>Català</option><option>Castellano</option><option>English</option><option>Français</option></select>
+        </div>
+      </div>
+      <div class="field"><label for="mail" data-t="f_mail">Correu</label><input type="email" id="mail" placeholder="hola@correu.com"></div>
+      <div class="field"><label for="tel" data-t="f_tel">Telèfon</label><input type="tel" id="tel" placeholder="+34 000 00 00 00"></div>
+      <button type="submit" class="submit" id="submit" data-t="f_submit">Sol·licitar reserva</button>
+      <p class="mono" style="margin-top:1rem;text-transform:none;letter-spacing:0;line-height:1.6" data-t="f_note">
+        Ara no es cobra res. Et confirmem la plaça abans de 24 h.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ PEU ============ -->
+<footer class="foot wrap">
+  <div class="foot__word">
+    <span>Pedra</span>
+    <p class="mid">Gratallops · Priorat<br>Tarragona · Catalunya<br>© 2026</p>
+    <span>Trencada</span>
+  </div>
+  <div class="foot__bar">
+    <span class="mono">+34 000 00 00 00 — hola@pedratrencada.example</span>
+    <div class="foot__links">
+      <a href="#" class="mono">Instagram</a>
+      <a href="#" class="mono" data-t="foot_legal">Avís legal</a>
+      <a href="#" class="mono" data-t="foot_priv">Privacitat</a>
+      <a href="#" class="mono" data-t="foot_cookies">Galetes</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   TOTS ELS TEXTOS — edita només aquest bloc per canviar o traduir el web.
+   Les claus que comencen per "html_" admeten etiquetes HTML.
+   ========================================================================== */
+const T = {
+ca:{
+  nav_coster:"El coster", nav_vins:"Vins", nav_visites:"Visites", nav_arribar:"Com arribar",
+  cta_reservar:"Reservar",
+  meta_loc:"Gratallops · Priorat · Tarragona", meta_do:"DOQ Priorat", meta_verema:"Verema a mà · setembre",
+  html_h1:`<span>No hi ha</span><span>màquina</span><span>que hi pugi</span>`,
+  hero_lede:"Els nostres bancals tenen pendents que passen del 50%. Cap tractor hi arriba: aquí es poda, es verema i es baixa el raïm a esquena, com fa vuit-cents anys. Set hectàrees, dotze mil ampolles i cap drecera.",
+  hero_side:"Garnatxa i carinyena velles — Sòl de llicorella — Vinyes entre 380 i 620 m — Producció limitada",
+  btn_visites:"Visites i tastos", btn_vins:"Veure els vins",
+  ph_hero:"Foto principal · bancals de llicorella en pendent",
+  fig1:"Pendent màxim dels costers", fig2:"De raïm per cep", fig3:"Metres d'altitud a la DOQ", fig4:"Del vi del Priorat és negre",
+  coster_h:"La llicorella",
+  coster_p1:"Pissarra negra trencada, amb vetes de quars. Un sòl pobríssim que gairebé no reté aigua: les arrels han de baixar metres avall buscant-la, i pel camí s'emporten tot el que la pedra els dona.",
+  coster_p2:"Per això un cep del Priorat fa un quilo de raïm i no deu. Menys vi, però cada got porta la muntanya a dins. I per això el Priorat és l'única denominació qualificada de Catalunya, una de les dues de tot l'Estat.",
+  html_statement:`Aquí el vi <em>costa</em> el que costa perquè costa de fer.`,
+  col1_h:"A esquena",
+  col1_p:"La verema es fa amb caixes petites que baixen a mà pels bancals. Un dia de collita són vuit persones i moltes pujades. No hi ha manera de fer-ho més barat sense fer-ho pitjor.",
+  col2_h:"Vinyes velles",
+  col2_p:"Les nostres carinyenes tenen entre seixanta i noranta anys. Donen poquíssim, però són les que aguanten la sequera quan els estius es tornen impossibles.",
+  col3_h:"Sense presses",
+  col3_p:"Fermentació amb el llevat de la vinya, criança llarga i cap filtració. Fem dos vins l'any i prou. Quan s'acaben, s'acaben fins la verema següent.",
+  cs_cap:"Pendent mitjà", arr_h:"Com arribar", arr_1:"Des de Falset, T-710 direcció Gratallops · 12 km", arr_2:"Travessar el poble i seguir el camí dels Costers", arr_3:"Pista senyalitzada a la dreta · 800 m fins al celler", arr_link:"Obrir a Google Maps ↗",
+  h_vins:"Cinc vins", vins_note:"Venda al celler i enviament a la península",
+  ph_b1:"Ampolla · Trencada Blanc", ph_b2:"Ampolla · Coster Nord",
+  ph_b3:"Ampolla · Vinya del Mig", ph_b4:"Ampolla · Pedra Trencada", ph_b5:"Ampolla · Ull de Perdiu",
+  w1_sub:"2024 · Garnatxa blanca · 900 ampolles", w2_sub:"2022 · Garnatxa · Carinyena · 12 mesos",
+  w3_sub:"2021 · Carinyena de 90 anys · 18 mesos", w4_sub:"2020 · Selecció de bancals · 1.400 ampolles", w5_sub:"2024 · Garnatxa de premsa directa · 1.200 ampolles",
+  w4_tag:"Exhaurit",
+  h_visites:"Pujar al coster",
+  e1_name:"Visita i tast", e1_desc:"Celler, bancals baixos i tast de quatre vins amb formatge i oli de la comarca. 1 h 30 · fins a 15 persones.",
+  e2_name:"Caminada pels costers", e2_desc:"Pujada a peu fins a la vinya de dalt, amb parada a mig camí. Calçat de muntanya obligatori. 3 h · màxim 10 persones.",
+  e3_name:"Veremar amb nosaltres", e3_desc:"Un matí de collita real al setembre: caixes, esquena i dinar llarg amb l'equip. Places molt limitades.",
+  per_person:"persona",
+  ph_v1:"Bancals des de dalt", ph_v2:"Mans amb pedra de llicorella", ph_v3:"Tast al celler", ph_v4:"Verema · caixes i equip",
+  h_premsa:"Què en diuen",
+  q1:"«Aquí hi va una frase curta de premsa o una ressenya real del client.»",
+  q2:"«Dues línies com a màxim. Com més concreta, millor funciona.»",
+  q3:"«També serveix una puntuació de guia o una ressenya de Google.»",
+  q4:"«Si no hi ha premsa, aquesta secció s'elimina sencera.»",
+  q_cite:"[ Nom del mitjà o del client ]",
+  h_reserva:"Reserva directa",
+  reserva_p:"Reservant aquí pagues el preu de celler, sense comissió de plataforma. Confirmem per WhatsApp en menys de 24 hores. La carretera de pujada és estreta: et donarem indicacions concretes per aparcar.",
+  dl_tel:"Telèfon i WhatsApp", dl_mail:"Correu", dl_adr:"Adreça", dl_hor:"Horari",
+  dl_hor_v:"Dt–Ds 10–14 h / 16–19 h · Dg 10–14 h · Dl tancat",
+  f_exp:"Experiència", f_data:"Data", f_data_ph:"DD / MM / AAAA", f_pax:"Persones",
+  f_nom:"Nom", f_nom_ph:"Nom i cognom", f_idioma:"Idioma", f_mail:"Correu", f_tel:"Telèfon",
+  opt1:"01 — Visita i tast · 30 €", opt2:"02 — Caminada pels costers · 55 €",
+  opt3:"03 — Veremar amb nosaltres · 90 €", opt4:"Grup o esdeveniment privat",
+  f_submit:"Sol·licitar reserva", f_sent:"Sol·licitud enviada ✓",
+  f_note:"Ara no es cobra res. Et confirmem la plaça abans de 24 h.",
+  foot_legal:"Avís legal", foot_priv:"Privacitat", foot_cookies:"Galetes"
+},
+es:{
+  nav_coster:"La ladera", nav_vins:"Vinos", nav_visites:"Visitas", nav_arribar:"Cómo llegar",
+  cta_reservar:"Reservar",
+  meta_loc:"Gratallops · Priorat · Tarragona", meta_do:"DOQ Priorat", meta_verema:"Vendimia a mano · septiembre",
+  html_h1:`<span>Aquí no</span><span>sube</span><span>ninguna máquina</span>`,
+  hero_lede:"Nuestros bancales superan el 50% de pendiente. Ningún tractor llega: aquí se poda, se vendimia y se baja la uva a hombros, como hace ochocientos años. Siete hectáreas, doce mil botellas y ningún atajo.",
+  hero_side:"Garnacha y cariñena viejas — Suelo de llicorella — Viñas entre 380 y 620 m — Producción limitada",
+  btn_visites:"Visitas y catas", btn_vins:"Ver los vinos",
+  ph_hero:"Foto principal · bancales de pizarra en pendiente",
+  fig1:"Pendiente máxima de las laderas", fig2:"De uva por cepa", fig3:"Metros de altitud en la DOQ", fig4:"Del vino del Priorat es tinto",
+  coster_h:"La llicorella",
+  coster_p1:"Pizarra negra quebrada, con vetas de cuarzo. Un suelo pobrísimo que apenas retiene agua: las raíces tienen que bajar metros buscándola, y por el camino se llevan todo lo que la piedra les da.",
+  coster_p2:"Por eso una cepa del Priorat da un kilo de uva y no diez. Menos vino, pero cada copa lleva la montaña dentro. Y por eso el Priorat es la única denominación calificada de Cataluña, una de las dos de todo el país.",
+  html_statement:`Aquí el vino <em>cuesta</em> lo que cuesta porque cuesta hacerlo.`,
+  col1_h:"A hombros",
+  col1_p:"La vendimia se hace con cajas pequeñas que bajan a mano por los bancales. Un día de cosecha son ocho personas y muchas subidas. No hay forma de hacerlo más barato sin hacerlo peor.",
+  col2_h:"Viñas viejas",
+  col2_p:"Nuestras cariñenas tienen entre sesenta y noventa años. Dan poquísimo, pero son las que aguantan la sequía cuando los veranos se vuelven imposibles.",
+  col3_h:"Sin prisa",
+  col3_p:"Fermentación con la levadura del propio viñedo, crianza larga y sin filtrar. Hacemos dos vinos al año y basta. Cuando se acaban, se acaban hasta la vendimia siguiente.",
+  cs_cap:"Pendiente media", arr_h:"Cómo llegar", arr_1:"Desde Falset, T-710 dirección Gratallops · 12 km", arr_2:"Cruzar el pueblo y seguir el camí dels Costers", arr_3:"Pista señalizada a la derecha · 800 m hasta la bodega", arr_link:"Abrir en Google Maps ↗",
+  h_vins:"Cinco vinos", vins_note:"Venta en bodega y envío a península",
+  ph_b1:"Botella · Trencada Blanc", ph_b2:"Botella · Coster Nord",
+  ph_b3:"Botella · Vinya del Mig", ph_b4:"Botella · Pedra Trencada", ph_b5:"Botella · Ull de Perdiu",
+  w1_sub:"2024 · Garnacha blanca · 900 botellas", w2_sub:"2022 · Garnacha · Cariñena · 12 meses",
+  w3_sub:"2021 · Cariñena de 90 años · 18 meses", w4_sub:"2020 · Selección de bancales · 1.400 botellas", w5_sub:"2024 · Garnacha de prensa directa · 1.200 botellas",
+  w4_tag:"Agotado",
+  h_visites:"Subir a la ladera",
+  e1_name:"Visita y cata", e1_desc:"Bodega, bancales bajos y cata de cuatro vinos con queso y aceite de la comarca. 1 h 30 · hasta 15 personas.",
+  e2_name:"Caminata por las laderas", e2_desc:"Subida a pie hasta la viña alta, con parada a media ladera. Calzado de montaña obligatorio. 3 h · máximo 10 personas.",
+  e3_name:"Vendimiar con nosotros", e3_desc:"Una mañana de cosecha real en septiembre: cajas, espalda y comida larga con el equipo. Plazas muy limitadas.",
+  per_person:"persona",
+  ph_v1:"Bancales desde arriba", ph_v2:"Manos con piedra de pizarra", ph_v3:"Cata en la bodega", ph_v4:"Vendimia · cajas y equipo",
+  h_premsa:"Lo que dicen",
+  q1:"«Aquí va una frase corta de prensa o una reseña real del cliente.»",
+  q2:"«Dos líneas como máximo. Cuanto más concreta, mejor funciona.»",
+  q3:"«También sirve una puntuación de guía o una reseña de Google.»",
+  q4:"«Si no hay prensa, esta sección se elimina entera.»",
+  q_cite:"[ Nombre del medio o del cliente ]",
+  h_reserva:"Reserva directa",
+  reserva_p:"Reservando aquí pagas el precio de bodega, sin comisión de plataforma. Confirmamos por WhatsApp en menos de 24 horas. La carretera de subida es estrecha: te daremos indicaciones concretas para aparcar.",
+  dl_tel:"Teléfono y WhatsApp", dl_mail:"Correo", dl_adr:"Dirección", dl_hor:"Horario",
+  dl_hor_v:"Mar–Sáb 10–14 h / 16–19 h · Dom 10–14 h · Lun cerrado",
+  f_exp:"Experiencia", f_data:"Fecha", f_data_ph:"DD / MM / AAAA", f_pax:"Personas",
+  f_nom:"Nombre", f_nom_ph:"Nombre y apellido", f_idioma:"Idioma", f_mail:"Correo", f_tel:"Teléfono",
+  opt1:"01 — Visita y cata · 30 €", opt2:"02 — Caminata por las laderas · 55 €",
+  opt3:"03 — Vendimiar con nosotros · 90 €", opt4:"Grupo o evento privado",
+  f_submit:"Solicitar reserva", f_sent:"Solicitud enviada ✓",
+  f_note:"Ahora no se cobra nada. Te confirmamos la plaza antes de 24 h.",
+  foot_legal:"Aviso legal", foot_priv:"Privacidad", foot_cookies:"Cookies"
+},
+en:{
+  nav_coster:"The slope", nav_vins:"Wines", nav_visites:"Visits", nav_arribar:"Find us",
+  cta_reservar:"Book",
+  meta_loc:"Gratallops · Priorat · Tarragona", meta_do:"DOQ Priorat", meta_verema:"Hand harvest · September",
+  html_h1:`<span>No machine</span><span>can climb</span><span>up here</span>`,
+  hero_lede:"Our terraces run at over 50%. No tractor gets up there: everything is pruned, picked and carried down on your back, the way it has been for eight hundred years. Seven hectares, twelve thousand bottles, no shortcuts.",
+  hero_side:"Old grenache and carignan — Llicorella slate — Vines between 380 and 620 m — Small production",
+  btn_visites:"Visits & tastings", btn_vins:"See the wines",
+  ph_hero:"Main photo · slate terraces on the slope",
+  fig1:"Steepest slope on the terraces", fig2:"Of fruit per vine", fig3:"Metres of altitude across the DOQ", fig4:"Of Priorat wine is red",
+  coster_h:"Llicorella",
+  coster_p1:"Broken black slate shot through with quartz. A desperately poor soil that holds almost no water: roots have to go metres down to find it, and they take everything the stone gives them on the way.",
+  coster_p2:"That is why a Priorat vine yields one kilo of fruit and not ten. Less wine, but every glass carries the mountain in it. And it is why Priorat is the only qualified denomination in Catalonia, one of just two in Spain.",
+  html_statement:`Here the wine <em>costs</em> what it costs because it costs to make.`,
+  col1_h:"On your back",
+  col1_p:"Harvest means small crates carried down the terraces by hand. A picking day is eight people and a lot of climbing. There is no way to make it cheaper without making it worse.",
+  col2_h:"Old vines",
+  col2_p:"Our carignan is between sixty and ninety years old. It gives very little, but it is what survives the drought when the summers turn impossible.",
+  col3_h:"No hurry",
+  col3_p:"Fermented with the vineyard's own yeast, aged long, never filtered. We make two wines a year and that is all. When they run out, they are gone until the next harvest.",
+  cs_cap:"Average gradient", arr_h:"Getting here", arr_1:"From Falset, T-710 towards Gratallops · 12 km", arr_2:"Through the village, then follow Camí dels Costers", arr_3:"Signposted track on the right · 800 m to the winery", arr_link:"Open in Google Maps ↗",
+  h_vins:"Five wines", vins_note:"Cellar door sales and shipping within Spain",
+  ph_b1:"Bottle · Trencada Blanc", ph_b2:"Bottle · Coster Nord",
+  ph_b3:"Bottle · Vinya del Mig", ph_b4:"Bottle · Pedra Trencada", ph_b5:"Bottle · Ull de Perdiu",
+  w1_sub:"2024 · White grenache · 900 bottles", w2_sub:"2022 · Grenache · Carignan · 12 months",
+  w3_sub:"2021 · 90-year-old carignan · 18 months", w4_sub:"2020 · Terrace selection · 1,400 bottles", w5_sub:"2024 · Direct-press grenache · 1,200 bottles",
+  w4_tag:"Sold out",
+  h_visites:"Up the slope",
+  e1_name:"Visit & tasting", e1_desc:"Cellar, the lower terraces and four wines with local cheese and olive oil. 1 h 30 · up to 15 people.",
+  e2_name:"Walk the terraces", e2_desc:"A climb on foot to the top vineyard with a stop halfway. Hiking shoes required. 3 h · 10 people max.",
+  e3_name:"Pick with us", e3_desc:"A real September morning of harvest: crates, aching back and a long lunch with the crew. Very few places.",
+  per_person:"per person",
+  ph_v1:"Terraces from above", ph_v2:"Hands holding slate", ph_v3:"Tasting in the cellar", ph_v4:"Harvest · crates and crew",
+  h_premsa:"What they say",
+  q1:"“A short line of press or a real client review goes here.”",
+  q2:"“Two lines at most. The more specific, the better it works.”",
+  q3:"“A guide score or a Google review works just as well.”",
+  q4:"“If there is no press, this whole section gets deleted.”",
+  q_cite:"[ Publication or client name ]",
+  h_reserva:"Book direct",
+  reserva_p:"Book here and you pay the cellar door price, with no platform commission. We confirm by WhatsApp within 24 hours. The road up is narrow, so we will send you exact parking directions.",
+  dl_tel:"Phone and WhatsApp", dl_mail:"Email", dl_adr:"Address", dl_hor:"Opening hours",
+  dl_hor_v:"Tue–Sat 10–14 & 16–19 · Sun 10–14 · Closed Mon",
+  f_exp:"Experience", f_data:"Date", f_data_ph:"DD / MM / YYYY", f_pax:"People",
+  f_nom:"Name", f_nom_ph:"First and last name", f_idioma:"Language", f_mail:"Email", f_tel:"Phone",
+  opt1:"01 — Visit & tasting · €30", opt2:"02 — Walk the terraces · €55",
+  opt3:"03 — Pick with us · €90", opt4:"Group or private event",
+  f_submit:"Request booking", f_sent:"Request sent ✓",
+  f_note:"Nothing is charged now. We confirm your place within 24 hours.",
+  foot_legal:"Legal notice", foot_priv:"Privacy", foot_cookies:"Cookies"
+},
+fr:{
+  nav_coster:"Le coteau", nav_vins:"Vins", nav_visites:"Visites", nav_arribar:"Accès",
+  cta_reservar:"Réserver",
+  meta_loc:"Gratallops · Priorat · Tarragone", meta_do:"DOQ Priorat", meta_verema:"Vendange à la main · septembre",
+  html_h1:`<span>Aucune</span><span>machine</span><span>ne monte ici</span>`,
+  hero_lede:"Nos terrasses dépassent 50% de pente. Aucun tracteur n'y accède : ici on taille, on vendange et on descend le raisin à dos d'homme, comme il y a huit cents ans. Sept hectares, douze mille bouteilles, aucun raccourci.",
+  hero_side:"Vieux grenache et carignan — Sol de llicorella — Vignes entre 380 et 620 m — Production limitée",
+  btn_visites:"Visites et dégustations", btn_vins:"Voir les vins",
+  ph_hero:"Photo principale · terrasses de schiste en pente",
+  fig1:"Pente maximale des coteaux", fig2:"De raisin par pied", fig3:"Mètres d'altitude dans la DOQ", fig4:"Du vin du Priorat est rouge",
+  coster_h:"La llicorella",
+  coster_p1:"Schiste noir brisé, veiné de quartz. Un sol très pauvre qui ne retient presque pas l'eau : les racines doivent descendre des mètres pour la chercher, et emportent au passage tout ce que la pierre leur donne.",
+  coster_p2:"C'est pourquoi un pied du Priorat donne un kilo de raisin et non dix. Moins de vin, mais chaque verre porte la montagne en lui. Et c'est pourquoi le Priorat est la seule appellation qualifiée de Catalogne, l'une des deux du pays.",
+  html_statement:`Ici le vin <em>coûte</em> ce qu'il coûte parce qu'il coûte à faire.`,
+  col1_h:"À dos d'homme",
+  col1_p:"La vendange se fait en petites caisses descendues à la main le long des terrasses. Un jour de récolte, c'est huit personnes et beaucoup de montées. Impossible de faire moins cher sans faire moins bien.",
+  col2_h:"Vieilles vignes",
+  col2_p:"Nos carignans ont entre soixante et quatre-vingt-dix ans. Ils donnent très peu, mais ce sont eux qui tiennent quand les étés deviennent impossibles.",
+  col3_h:"Sans hâte",
+  col3_p:"Fermentation avec les levures de la vigne, élevage long, aucune filtration. Nous faisons deux vins par an, c'est tout. Quand il n'y en a plus, il faut attendre la vendange suivante.",
+  cs_cap:"Pente moyenne", arr_h:"Accès", arr_1:"Depuis Falset, T-710 direction Gratallops · 12 km", arr_2:"Traverser le village puis suivre le camí dels Costers", arr_3:"Piste signalée à droite · 800 m jusqu'au domaine", arr_link:"Ouvrir dans Google Maps ↗",
+  h_vins:"Cinq vins", vins_note:"Vente au domaine et expédition en Espagne",
+  ph_b1:"Bouteille · Trencada Blanc", ph_b2:"Bouteille · Coster Nord",
+  ph_b3:"Bouteille · Vinya del Mig", ph_b4:"Bouteille · Pedra Trencada", ph_b5:"Bouteille · Ull de Perdiu",
+  w1_sub:"2024 · Grenache blanc · 900 bouteilles", w2_sub:"2022 · Grenache · Carignan · 12 mois",
+  w3_sub:"2021 · Carignan de 90 ans · 18 mois", w4_sub:"2020 · Sélection de terrasses · 1 400 bouteilles", w5_sub:"2024 · Grenache de presse directe · 1 200 bouteilles",
+  w4_tag:"Épuisé",
+  h_visites:"Monter au coteau",
+  e1_name:"Visite et dégustation", e1_desc:"Chai, terrasses basses et dégustation de quatre vins avec fromage et huile de la région. 1 h 30 · jusqu'à 15 personnes.",
+  e2_name:"Marche sur les coteaux", e2_desc:"Montée à pied jusqu'à la vigne haute, avec pause à mi-parcours. Chaussures de montagne obligatoires. 3 h · 10 personnes max.",
+  e3_name:"Vendanger avec nous", e3_desc:"Une vraie matinée de récolte en septembre : caisses, dos cassé et long repas avec l'équipe. Places très limitées.",
+  per_person:"par personne",
+  ph_v1:"Terrasses vues d'en haut", ph_v2:"Mains tenant du schiste", ph_v3:"Dégustation au chai", ph_v4:"Vendange · caisses et équipe",
+  h_premsa:"Ce qu'on en dit",
+  q1:"«Ici, une phrase courte de presse ou un avis réel du client.»",
+  q2:"«Deux lignes maximum. Plus c'est concret, mieux ça marche.»",
+  q3:"«Une note de guide ou un avis Google fonctionne aussi.»",
+  q4:"«S'il n'y a pas de presse, on supprime toute la section.»",
+  q_cite:"[ Nom du média ou du client ]",
+  h_reserva:"Réservation directe",
+  reserva_p:"En réservant ici, vous payez le prix du domaine, sans commission de plateforme. Nous confirmons par WhatsApp sous 24 heures. La route qui monte est étroite : nous vous enverrons des indications précises pour vous garer.",
+  dl_tel:"Téléphone et WhatsApp", dl_mail:"E-mail", dl_adr:"Adresse", dl_hor:"Horaires",
+  dl_hor_v:"Mar–Sam 10–14 h / 16–19 h · Dim 10–14 h · Lun fermé",
+  f_exp:"Formule", f_data:"Date", f_data_ph:"JJ / MM / AAAA", f_pax:"Personnes",
+  f_nom:"Nom", f_nom_ph:"Nom et prénom", f_idioma:"Langue", f_mail:"E-mail", f_tel:"Téléphone",
+  opt1:"01 — Visite et dégustation · 30 €", opt2:"02 — Marche sur les coteaux · 55 €",
+  opt3:"03 — Vendanger avec nous · 90 €", opt4:"Groupe ou événement privé",
+  f_submit:"Demander une réservation", f_sent:"Demande envoyée ✓",
+  f_note:"Rien n'est débité maintenant. Nous confirmons votre place sous 24 h.",
+  foot_legal:"Mentions légales", foot_priv:"Confidentialité", foot_cookies:"Cookies"
+}
+};
+
+let lang = "ca";
+function setLang(code){
+  const d = T[code]; if(!d) return;
+  lang = code;
+  document.documentElement.lang = code;
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    const k = el.dataset.t, v = d[k];
+    if(v === undefined) return;
+    if(k.startsWith("html_")) el.innerHTML = v; else el.textContent = v;
+  });
+  document.querySelectorAll("[data-t-label]").forEach(el=>{
+    const v = d[el.dataset.tLabel]; if(v !== undefined) el.dataset.label = v;
+  });
+  document.querySelectorAll("[data-t-ph]").forEach(el=>{
+    const v = d[el.dataset.tPh]; if(v !== undefined) el.placeholder = v;
+  });
+  document.querySelectorAll("#lang button").forEach(b=>{
+    b.setAttribute("aria-current", b.dataset.lang === code ? "true" : "false");
+  });
+}
+document.getElementById("lang").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(b) setLang(b.dataset.lang);
+});
+
+const head = document.getElementById("head");
+addEventListener("scroll", ()=>head.classList.toggle("stuck", scrollY>40), {passive:true});
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+},{threshold:.12, rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".rv").forEach((el,i)=>{ el.style.transitionDelay = (i%3)*80+"ms"; io.observe(el); });
+
+const fecha = document.getElementById("fecha");
+fecha.addEventListener("input", ()=>{
+  let v = fecha.value.replace(/\D/g,"").slice(0,8);
+  if(v.length>4)      v = v.slice(0,2)+" / "+v.slice(2,4)+" / "+v.slice(4);
+  else if(v.length>2) v = v.slice(0,2)+" / "+v.slice(2);
+  fecha.value = v;
+});
+
+document.getElementById("form").addEventListener("submit", e=>{
+  e.preventDefault();
+  document.getElementById("submit").textContent = T[lang].f_sent;
+});
+</script>
+</body>
+</html>
